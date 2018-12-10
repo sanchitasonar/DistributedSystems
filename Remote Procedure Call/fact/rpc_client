@@ -1,0 +1,12 @@
+info17@info17-HP:~$ ./fact_client localhost
+bash: ./fact_client: No such file or directory
+info17@info17-H:~$ cd exp11
+info17@info17-HPsss:~/exp11$ ./fact_client localhost
+[3;J
+
+Enter a no:: 10
+Factorial=3628800
+Try again : (1/0) :: 
+
+
+

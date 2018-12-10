@@ -1,0 +1,84 @@
+info17@info17-HP:~$ sudo apt-get update
+[sudo] password for info17: 
+Hit http://ppa.launchpad.net vivid InRelease                                   
+Hit http://ppa.launchpad.net vivid/main i386 Packages                          
+Hit http://ppa.launchpad.net vivid/main Translation-en                         
+Hit http://security.ubuntu.com vivid-security InRelease                        
+Hit http://security.ubuntu.com vivid-security/main Sources                     
+Hit http://security.ubuntu.com vivid-security/restricted Sources               
+Hit http://security.ubuntu.com vivid-security/universe Sources                 
+Hit http://in.archive.ubuntu.com vivid InRelease                               
+Hit http://in.archive.ubuntu.com vivid-updates InRelease                       
+Hit http://in.archive.ubuntu.com vivid-backports InRelease                     
+Hit http://security.ubuntu.com vivid-security/multiverse Sources               
+Hit http://in.archive.ubuntu.com vivid/main Sources                            
+Hit http://security.ubuntu.com vivid-security/main i386 Packages               
+Hit http://security.ubuntu.com vivid-security/restricted i386 Packages         
+Hit http://security.ubuntu.com vivid-security/universe i386 Packages           
+Hit http://security.ubuntu.com vivid-security/multiverse i386 Packages         
+Hit http://in.archive.ubuntu.com vivid/restricted Sources                      
+Hit http://security.ubuntu.com vivid-security/main Translation-en              
+Hit http://security.ubuntu.com vivid-security/multiverse Translation-en        
+Hit http://security.ubuntu.com vivid-security/restricted Translation-en        
+Hit http://in.archive.ubuntu.com vivid/universe Sources                        
+Hit http://security.ubuntu.com vivid-security/universe Translation-en          
+Hit http://in.archive.ubuntu.com vivid/multiverse Sources                      
+Hit http://in.archive.ubuntu.com vivid/main i386 Packages                      
+Hit http://in.archive.ubuntu.com vivid/restricted i386 Packages                
+Hit http://in.archive.ubuntu.com vivid/universe i386 Packages                  
+Hit http://in.archive.ubuntu.com vivid/multiverse i386 Packages                
+Hit http://in.archive.ubuntu.com vivid/main Translation-en                     
+Hit http://in.archive.ubuntu.com vivid/multiverse Translation-en               
+Hit http://in.archive.ubuntu.com vivid/restricted Translation-en               
+Hit http://in.archive.ubuntu.com vivid/universe Translation-en                 
+Hit http://in.archive.ubuntu.com vivid-updates/main Sources                    
+Hit http://in.archive.ubuntu.com vivid-updates/restricted Sources              
+Hit http://in.archive.ubuntu.com vivid-updates/universe Sources                
+Hit http://in.archive.ubuntu.com vivid-updates/multiverse Sources              
+Hit http://in.archive.ubuntu.com vivid-updates/main i386 Packages              
+Hit http://in.archive.ubuntu.com vivid-updates/restricted i386 Packages        
+Hit http://in.archive.ubuntu.com vivid-updates/universe i386 Packages          
+Hit http://in.archive.ubuntu.com vivid-updates/multiverse i386 Packages        
+Hit http://in.archive.ubuntu.com vivid-updates/main Translation-en             
+Hit http://in.archive.ubuntu.com vivid-updates/multiverse Translation-en       
+Hit http://in.archive.ubuntu.com vivid-updates/restricted Translation-en       
+Hit http://in.archive.ubuntu.com vivid-updates/universe Translation-en         
+Hit http://in.archive.ubuntu.com vivid-backports/main Sources                  
+Hit http://in.archive.ubuntu.com vivid-backports/restricted Sources            
+Hit http://in.archive.ubuntu.com vivid-backports/universe Sources              
+Hit http://in.archive.ubuntu.com vivid-backports/multiverse Sources            
+Hit http://in.archive.ubuntu.com vivid-backports/main i386 Packages            
+Hit http://in.archive.ubuntu.com vivid-backports/restricted i386 Packages      
+Hit http://in.archive.ubuntu.com vivid-backports/universe i386 Packages        
+Hit http://in.archive.ubuntu.com vivid-backports/multiverse i386 Packages      
+Hit http://in.archive.ubuntu.com vivid-backports/main Translation-en           
+Hit http://in.archive.ubuntu.com vivid-backports/multiverse Translation-en     
+Hit http://in.archive.ubuntu.com vivid-backports/restricted Translation-en     
+Hit http://in.archive.ubuntu.com vivid-backports/universe Translation-en       
+Reading package lists... Done                                                  
+info17@info17-HP:~$ sudo apt-get install rpcbind
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+rpcbind is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 362 not upgraded.
+info17@info17-HP:~$ mkdir exp11
+info17@info17-HP:~$ cd exp11
+info17@info17-HP:~/exp11$ gedit fact.x
+info17@info17-HP:~/exp11$ rpcgen -a -C fact.x
+info17@info17-HP:~/exp11$ gedit Makefile.fact
+info17@info17-HP:~/exp11$ gedit fact_client.c
+info17@info17-HP:~/exp11$ gedit fact_server.c
+info17@info17-HP:~/exp11$ make -f Makefile.fact
+cc -g -DRPC_SVC_FG   -c -o fact_clnt.o fact_clnt.c
+cc -g -DRPC_SVC_FG   -c -o fact_client.o fact_client.c
+cc -g -DRPC_SVC_FG   -c -o fact_xdr.o fact_xdr.c
+cc -g -DRPC_SVC_FG    -o fact_client  fact_clnt.o fact_client.o fact_xdr.o -lnsl 
+cc -g -DRPC_SVC_FG   -c -o fact_svc.o fact_svc.c
+cc -g -DRPC_SVC_FG   -c -o fact_server.o fact_server.c
+cc -g -DRPC_SVC_FG    -o fact_server  fact_svc.o fact_server.o fact_xdr.o -lnsl
+info17@info17-HP:~/exp11$ sudo ./fact_server
+
+ Received : n= 10 
+
+
